@@ -1,0 +1,32 @@
+{% extends "sharin/layout.html" %}
+
+{% block body %}
+    <div class="corpo">
+        <div class="info">
+            <h1>HOME</h1>
+        </div>
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-6">
+                    {% for publicacao in publicacao_list %}
+                        <div class="row">
+                            <div class="card text-end" style="width: 18rem;">
+                                <div class="card-body">
+                                    <div id="cardInfo">
+                                        <h5 class="card-title">{{ publicacao.titulo }}</h5>
+                                        <p class="card-text">{{ publicacao.descricao }}</p>
+                                    </div>
+                                    <a href="{% url 'sharin:publicacao-view' publicacao.id %}" class="btn btn-primary">Tenho interesse</a>
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                    {% endfor %}
+                </div>
+                <div class="col-6">
+                    Column
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'sharin/layout.html' %}
+
+
+{% block body %}
+    <div class="corpo">
+        <div id="cadastroND" class="container-fluid text-center"></div>
+            <form action="{% url 'sharin:register' %}" method="post">
+                {% csrf_token %}
+                <div id="registro_user" class="row">
+                    <input type="text" name="nome_usuario" placeholder=" Insira o seu nome de usuário" Required>
+                </div>
+                
+                <div id="registro_prim" class="row">
+                    <input type="text" name="primeiro_nome" placeholder="Insira o seu primeiro nome" Required>
+                </div>
+
+                <div id="registro_ulti" class="row">
+                    <input type="text" name="ultimo_nome" placeholder="Insira o seu último nome" Required>
+                </div>
+                
+                <div id="registro_email" class="row">
+                    <input type="email" name="email" placeholder="Insira o seu email" Required>        
+                </div>
+                
+                <div id="registro_senha" class="row">
+                    <input type="password" name="senha" id="senha" placeholder="Digite a senha" Required>
+                </div>
+                
+                <div id="registro_conf_senha" class="row">
+                    <input type="password" name="confirmacao_senha" id="confirmacao_senha" placeholder="Digite novamente a senha" Required>
+                </div>
+                
+                <div id="registro_enviar" class="row">
+                    <input type="submit" value="Login">
+                </div>
+            </form>
+        </div>
+    </div>
+    {% for message in messages %}
+        <h2>{{ message }}</h2>
+        {% endfor %}
+        
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'sharin/layout.html' %}
+
+{% block body %}
+    <div class="corpo">
+        <div>
+            <h1 class="info">CADASTRAR NECESSIDADE / DISPONIBILIDADE</h1>
+        </div>
+
+        {% if enviado %}
+            <h1>NECESSIDADE / DISPONIBILIDADE PUBLICADA COM SUCESSO!</h1>
+            
+        {% else %}
+            <form action="{% url 'sharin:cadastro' %}" method="POST">
+                {% csrf_token %}
+            
+                {{ form.as_p }}
+
+                <input type="submit" value="Enviar">
+            </form>
+        {% endif %}
+    </div>
+{% endblock %}

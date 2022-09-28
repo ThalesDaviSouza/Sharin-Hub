@@ -1,0 +1,14 @@
+{% extends "sharin/layout.html" %}
+
+{% block body %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Atualizar">
+    </form>
+
+    {% if atualizado %}
+        <h1>Atualizado com sucesso!</h1>
+    {% endif %}
+
+{% endblock %}

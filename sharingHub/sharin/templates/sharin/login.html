@@ -1,0 +1,31 @@
+{% extends 'sharin/layout.html' %}
+
+
+{% block body %}
+    <div class="corpo">
+        <h2 class="info">Entre na sua conta:</h2>
+        <div id="cadastroND" class="container-fluid text-center">
+            <form action=" {% url 'sharin:login_view' %}" method="post">
+                {% csrf_token %}
+                <div id="login_nome_usuario" class="row">
+                    <input type="text" name="nome_usuario" placeholder="Usuário">
+                </div>
+                <div id="login_senha" class="row">
+                    <input type="password" name="senha" placeholder="Senha">
+                </div>
+                <div id="login_enviar" class="row">
+                    <input type="submit" value="Login">
+                </div>
+            </form>
+            {% if message %}
+                <h1 class="aviso">{{ message }}</h1>
+            {% endif %}
+
+            <h3 class="info">Ainda não tem conta?</h3>
+            <form action="{% url 'sharin:register' %}">
+                <input type="submit" value="Registrar">
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

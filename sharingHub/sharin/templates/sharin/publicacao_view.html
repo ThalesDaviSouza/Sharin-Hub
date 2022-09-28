@@ -1,0 +1,17 @@
+{% extends 'sharin/layout.html' %}
+
+{% block body %}
+    <div class="corpo">
+        <h1>{{ publicacao.titulo }}</h1>
+        <ul>
+            <li>{{ publicacao.descricao }}</li>
+            <li>{{ publicacao.data }}</li>
+            <li>{{ publicacao.tags }}</li>
+            <li>{{ publicacao.telefone }}</li>
+        </ul>
+        <h2>Criado por: {{ criador.username }}</h2>
+        <h2>Email: {{ criador.email }}</h2>
+        <a href="{% url 'sharin:publicacao-edit' publicacao.id %}">Editar</a>
+    </div>
+
+{% endblock %}
