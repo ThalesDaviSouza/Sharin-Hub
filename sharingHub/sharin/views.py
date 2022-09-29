@@ -66,19 +66,43 @@ def publicacao_edit(request, publicacao_id):
         return redirect("sharin:login_view")
     
     publicacao = Publicacao.objects.get(pk=publicacao_id)
+    criador = User.objects.get(pk=publicacao.criador)
     form = PublicaForm(request.POST or None, instance=publicacao)
 
     if form.is_valid():
         form.save()
         atualizado = True
 
-    
-
     return render(request, "sharin/publicacao_edit.html", {
         "publicacao":publicacao,
         "form":form,
         "atualizado":atualizado,
+        "criador":criador,
     })
+
+def publicacao_delete(request, publicacao_id):
+    if not request.user.is_authenticated:
+        return redirect("sharin:login_view")
+    
+    publicacao = Publicacao.objects.get(pk=publicacao_id)
+    publicacao.delete()
+    return redirect("sharin:index")
+
+def pesquisa_publicacao(request):
+    if not request.user.is_authenticated:
+        return redirect("sharin:login_view")
+
+    if request.method == "POST":
+        pesquisa = request.POST["pesquisado"]
+        resultados = Publicacao.objects.filter(titulo__contains=pesquisa)
+
+        return render(request, "sharin/pesquisa_publicacao.html", {
+            "pesquisa":pesquisa,
+            "resultados":resultados,
+        })
+
+
+    return render(request, "sharin/pesquisa_publicacao.html",)
 
 
 def login_view(request):
@@ -138,4 +162,8 @@ def perfil(request):
     if not request.user.is_authenticated:
         return redirect("sharin:login_view")
     
-    return render(request, "sharin/perfil.html")
+    publicacoes = Publicacao.objects.all().filter(criador=request.user.id)
+    
+    return render(request, "sharin/perfil.html", {
+        "publicacoes":publicacoes,
+    })

@@ -1,12 +1,16 @@
 {% extends "sharin/layout.html" %}
 
 {% block body %}
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Atualizar">
-    </form>
+    {% if user == criador %}
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Atualizar">
+        </form>
 
+    {% else %}
+        Você não tem permissão pra editar essa publicacão.
+    {% endif %}
     {% if atualizado %}
         <h1>Atualizado com sucesso!</h1>
     {% endif %}

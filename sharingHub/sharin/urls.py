@@ -12,4 +12,6 @@ urlpatterns = [
     path("perfil/", views.perfil, name="perfil"),
     path("publicacao_view/<publicacao_id>", views.publicacao_view, name="publicacao-view"),
     path("publicacao_edit/<publicacao_id>", views.publicacao_edit, name="publicacao-edit"),
+    path("publicacao_delete/<publicacao_id>", views.publicacao_delete, name="publicacao-delete"),
+    path("pesquisa_publicacao", views.pesquisa_publicacao, name="pesquisa-publicacao"),
 ]

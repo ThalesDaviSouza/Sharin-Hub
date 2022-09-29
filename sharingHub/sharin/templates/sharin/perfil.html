@@ -28,6 +28,13 @@
                 </form>
             </div>
         </div>
+        <ul>
+            {% for publicacao in publicacoes %}
+
+            <li>{{publicacao.titulo}}</li>
+
+            {% endfor %}
+        </ul>
     </div>
 
 

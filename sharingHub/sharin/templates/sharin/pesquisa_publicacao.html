@@ -1,0 +1,15 @@
+{% extends 'sharin/layout.html' %}
+
+{% block body %}
+    {% if pesquisa %}
+        <h1>Resultados para {{ pesquisa }}</h1>
+        {% for resultado in resultados %}
+            <a href="{% url 'sharin:publicacao-view' resultado.id %}" class="btn btn-primary">{{resultado.titulo}}</a><br/>
+        {% endfor %}
+
+    {% else %}
+        <h1>Você não pesquisou nada.</h1>
+    {% endif %}
+
+
+{% endblock %}
