@@ -14,8 +14,23 @@
 
         {% if user == criador %}
             <a href="{% url 'sharin:publicacao-edit' publicacao.id %}">Editar</a>
-            <a href="{% url 'sharin:publicacao-delete' publicacao.id %}">Deletar</a>
+            <a id="deletar" data-url="{% url 'sharin:publicacao-delete' publicacao.id %}">Deletar</a>
         {% endif %}
     </div>
 
+{% endblock %}
+
+{% block script %}
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('#deletar').onclick = function(){
+                let confirmacao = confirm('Tem certeza que deseja deletar?')
+                if(confirmacao === true){
+                    window.location.replace(document.querySelector('#deletar').dataset.url)
+                }
+            }
+        })
+
+
+    </script>
 {% endblock %}
