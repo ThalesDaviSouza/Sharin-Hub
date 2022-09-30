@@ -77,6 +77,67 @@ $cor_secundaria: rgb(247, 182, 83);
     transform: scale(1.5);
 }
 
+
+
+.container {
+    width: 100%;
+    align-items: center;
+    padding: 2% 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.container .card {
+    width: 45%;
+    padding: 1.3%;
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    text-align: left;
+    box-shadow: 1px 1px 4px $cor_principal;
+    transition: all 0.5s ease 0s;
+}
+.container .card h1 {
+    color:$cor_principal;
+    font-size: 1.6rem;
+    transition: all 0.5s ease 0s;
+}
+
+.container .card .content p {
+    color: rgb(22, 21, 21);
+    transition: all 0.5s ease 0s;
+}
+
+.container .card .content a {
+    display: inline-block;
+    padding: 0.5% 0.8%;
+    background-color: $cor_principal;
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    text-align: end;
+    outline: none;
+    margin-top: 20px;
+    transition: all 0.5s ease 0s;
+}
+
+.container .card:hover {
+    background-color: $cor_secundaria;
+    margin-top: -2.5%;
+    box-shadow: 2px 2px 8px $cor_principal;
+}
+
+
+.container .card:hover h1, .container .card:hover .content p{
+    color:white;
+}
+
+.container .card .content a:hover{
+    color: black;
+    background-color: white;
+}
+
+
 .info {
     font-family: 'Courier New', Courier, monospace;
     color:rgb(58, 58, 58);
@@ -84,7 +145,7 @@ $cor_secundaria: rgb(247, 182, 83);
 }
 
 .corpo {
-    margin: 1.5%;
+    padding: 1.5%;
     text-align: center;
 }
 
@@ -140,4 +201,9 @@ $cor_secundaria: rgb(247, 182, 83);
     margin: 1.3%;
     margin-left: 15%;
     margin-right: 15%;
+}
+
+#card-button {
+    width: 100%;
+    text-align: end;
 }
