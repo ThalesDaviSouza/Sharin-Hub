@@ -29,11 +29,9 @@
             </div>
         </div>
         <ul>
-            {% for publicacao in publicacoes %}
-
-            <li>{{publicacao.titulo}}</li>
-
-            {% endfor %}
+            {% if publicacoes %}
+                <a href="{% url 'sharin:historico-usuario' %}">Historico</a>
+            {% endif %}
         </ul>
     </div>
 

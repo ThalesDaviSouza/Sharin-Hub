@@ -1,0 +1,15 @@
+{% extends 'sharin/layout.html' %}
+
+{% block body %}
+    {% if publicacoes %}
+        <ul>
+            {% for publicacao in publicacoes %}
+                <li>{{ publicacao.titulo }}</li>
+            {% endfor %}
+        </ul>
+
+    {% else %}
+        <h1>Você não tem publicacoes.</h1>
+        
+    {% endif %}
+{% endblock %}

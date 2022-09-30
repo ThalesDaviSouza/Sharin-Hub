@@ -167,3 +167,13 @@ def perfil(request):
     return render(request, "sharin/perfil.html", {
         "publicacoes":publicacoes,
     })
+
+def historico(request):
+    if not request.user.is_authenticated:
+        return redirect("sharin:login_view")
+
+    publicacoes = Publicacao.objects.all().filter(criador=request.user.id)
+
+    return render(request, "sharin/historico.html", {
+        "publicacoes": publicacoes,
+    })
