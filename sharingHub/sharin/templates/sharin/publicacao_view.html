@@ -1,7 +1,9 @@
 {% extends 'sharin/layout.html' %}
+{% load static %}
+{% load i18n %}
 
 {% block body %}
-    <div class="corpo">
+    <!-- <div class="corpo">
         <h1>{{ publicacao.titulo }}</h1>
         <ul>
             <li>{{ publicacao.descricao }}</li>
@@ -16,8 +18,35 @@
             <a href="{% url 'sharin:publicacao-edit' publicacao.id %}">Editar</a>
             <a id="deletar" data-url="{% url 'sharin:publicacao-delete' publicacao.id %}">Deletar</a>
         {% endif %}
+    </div> -->
+    <div class="post-container">
+        <h1>{{publicacao.titulo}}</h1>
+        <div id="post-descricao">
+            <p>{{publicacao.descricao}}</p>
+        </div>
+        <div class="post-extra-info">
+            <p>{{ publicacao.tags }}</p>
+            {% language 'pt-BR' %}
+                <p>{{ publicacao.data|date:"j F, Y" }}</p>
+            {% endlanguage %}
+
+            
+            {% if user == criador %}
+                <div class="post-op">
+                    <a id="editar" href="{% url 'sharin:publicacao-edit' publicacao.id %}">Editar</a>
+                    <a id="deletar" data-url="{% url 'sharin:publicacao-delete' publicacao.id %}">Deletar</a>
+                </div>
+            {% endif %}
+        </div>
+        <div class="contato">
+            <h1>Contato</h1>
+            <p>{{ criador.email }}</p>
+            <p>{{ publicacao.telefone }}</p>
+        </div>
+
     </div>
 
+    
 {% endblock %}
 
 {% block script %}
