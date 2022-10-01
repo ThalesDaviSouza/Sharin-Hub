@@ -10,13 +10,15 @@
             <h1>NECESSIDADE / DISPONIBILIDADE PUBLICADA COM SUCESSO!</h1>
             
         {% else %}
-            <form action="{% url 'sharin:cadastro' %}" method="POST">
-                {% csrf_token %}
-            
-                {{ form.as_p }}
-
-                <input type="submit" value="Enviar">
-            </form>
+            <div class="cadastro">
+                <form action="{% url 'sharin:cadastro' %}" method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div id="cadastro-enviar-container">
+                        <input id="cadastro-enviar" type="submit" value="Enviar">
+                    </div>
+                </form>
+            </div>
         {% endif %}
     </div>
 {% endblock %}

@@ -1,15 +1,33 @@
 {% extends 'sharin/layout.html' %}
 
 {% block body %}
-    {% if publicacoes %}
-        <ul>
+    <div class="corpo">
+        <div class="hist-title">
+            <h1>Histórico</h1>
+            <p>Aqui ficam as publicações que você fez até o momento</p>
+        </div>
+            
+        {% if publicacoes %}
             {% for publicacao in publicacoes %}
-                <li>{{ publicacao.titulo }}</li>
+                <div class="container">
+                    <div class="card">
+                        <h1>{{publicacao.titulo}}</h1>
+                        <div class="content">
+                            {% if publicacao.descricao|length > 275  %}
+                                <p>{{publicacao.descricao|slice:":275"}}..</p>
+                            {%else%}
+                                <p>{{publicacao.descricao}}</p>
+                            {% endif %}
+                            <div id="card-button">
+                                <a href="{% url 'sharin:publicacao-view' publicacao.id %}">Ver com mais detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             {% endfor %}
-        </ul>
+        {% else %}
+            <h1>Você não tem publicacoes.</h1>
+        {% endif %}
 
-    {% else %}
-        <h1>Você não tem publicacoes.</h1>
-        
-    {% endif %}
+    </div>
 {% endblock %}

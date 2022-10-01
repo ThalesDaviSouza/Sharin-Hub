@@ -103,7 +103,7 @@ $cor_secundaria: rgb(247, 182, 83);
 }
 
 .container .card {
-    width: 45%;
+    width: 60%;
     padding: 1.3%;
     background-color: white;
     border-radius: 15px;
@@ -132,19 +132,23 @@ $cor_secundaria: rgb(247, 182, 83);
 
 .container .card:hover {
     background-color: $cor_secundaria;
-    margin-left: 5%;
+    transform: scale(1.12);
     box-shadow: 2px 2px 8px $cor_principal;
 }
 
 
-.card:hover h1, .content p{
+.card:hover h1, .card:hover .content p{
     color:white;
 }
 
-#card-button a{
-    color: black;
+#card-button a:hover{
+    color: $cor_principal;
     background-color: white;
+    transform: scale(1.15);
 }
+
+
+//Post view
 
 .post-container {
     padding: 3% 23%;
@@ -190,6 +194,7 @@ $cor_secundaria: rgb(247, 182, 83);
 
 #editar{
     background-color: lightblue;
+    border: 1px solid lightblue;
 }
 
 #editar:hover{
@@ -201,6 +206,7 @@ $cor_secundaria: rgb(247, 182, 83);
 
 #deletar{
     background-color: red;
+    color: white;
     cursor: pointer;
 }
 
@@ -236,7 +242,7 @@ $cor_secundaria: rgb(247, 182, 83);
 }
 
 #submit{
-    @extend botao;
+    @extend .botao;
     font-size: 1.2rem;
     padding: 0.28% 0.6%;
     box-shadow: 1px 1px 3px;
@@ -259,6 +265,7 @@ $cor_secundaria: rgb(247, 182, 83);
 #edit-back{
     @extend .botao;
     text-decoration: none;
+    padding: 0.3% 0.6%;
 }
 
 
@@ -297,7 +304,65 @@ $cor_secundaria: rgb(247, 182, 83);
     padding: 0.3% 1%;
 }
 
+.logout{
+    text-align: end;
+}
 
+.logout input {
+    @extend .botao;
+    font-size: 1.2rem;
+    padding: 0.5% 1.2%;
+    background-color:rgb(173, 26, 26);
+    border: 1px solid rgb(173, 26, 26);;
+}
+
+.logout input:hover{
+    color: rgb(173, 26, 26);
+    box-shadow: 1px 1px 2px rgb(173, 26, 26);
+}
+
+// Histórico
+.hist-title {
+    text-align: left;
+    padding: 0px 4%;
+}
+
+//Search screen
+#search{
+    text-align: left;
+}
+
+//Register post screen
+.cadastro{
+    text-align: left;
+    padding: 0px 6%;
+}
+
+.cadastro label{
+    display: none;
+}
+
+.cadastro input, .cadastro textarea{
+    box-shadow: 2px 2px 4px $cor_principal;
+}
+
+.cadastro input::placeholder, .cadastro textarea::placeholder{
+    font-size: 1.1rem;
+}
+
+#cadastro-enviar-container {
+    text-align: right;
+}
+
+#cadastro-enviar{
+    @extend .botao;
+    font-size: 1.2rem;
+    padding: 0.2% 0.8%;
+}
+
+#cadastro-enviar:hover{
+    transform: scale(1.2);
+}
 
 
 .info {

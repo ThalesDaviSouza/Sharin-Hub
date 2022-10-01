@@ -14,6 +14,11 @@
                 <p>Email: {{request.user.email}}</p>
                 <a class="botao" href="{% url 'sharin:historico-usuario'%}">Histórico de publicações</a>
             </div>
+            <div class="logout">
+                <form action="{% url 'sharin:logout_view' %}">
+                    <input type="submit" value="Log Out">
+                </form>
+            </div>
         </div>
 
     </div>

@@ -4,7 +4,7 @@
   padding: 0;
 }
 
-.botao {
+.botao, #cadastro-enviar, .logout input, .perfil-info a, #edit-back, #submit, .post-op a, .container .card .content a {
   color: white;
   background-color: rgb(201, 120, 0);
   border: 1px solid rgb(201, 120, 0);
@@ -13,7 +13,7 @@
   transition: all 0.3s ease 0s;
 }
 
-.botao:hover {
+.botao:hover, #cadastro-enviar:hover, .logout input:hover, .perfil-info a:hover, #edit-back:hover, #submit:hover, .post-op a:hover, .container .card .content a:hover {
   background-color: white;
   color: rgb(201, 120, 0);
 }
@@ -94,7 +94,7 @@
 }
 
 .container .card {
-  width: 45%;
+  width: 60%;
   padding: 1.3%;
   background-color: white;
   border-radius: 15px;
@@ -118,29 +118,23 @@
 .container .card .content a {
   display: inline-block;
   padding: 0.5% 0.8%;
-  background-color: rgb(201, 120, 0);
-  color: white;
-  border-radius: 10px;
-  text-decoration: none;
-  text-align: end;
-  outline: none;
   margin-top: 20px;
-  transition: all 0.5s ease 0s;
 }
 
 .container .card:hover {
   background-color: rgb(247, 182, 83);
-  margin-left: 5%;
+  transform: scale(1.12);
   box-shadow: 2px 2px 8px rgb(201, 120, 0);
 }
 
-.container .card:hover h1, .container .card:hover .content p {
+.card:hover h1, .card:hover .content p {
   color: white;
 }
 
-.container .card:hover .content #card-button a {
-  color: black;
+#card-button a:hover {
+  color: rgb(201, 120, 0);
   background-color: white;
+  transform: scale(1.15);
 }
 
 .post-container {
@@ -181,33 +175,30 @@
   padding: 5% 0px;
 }
 
-.post-container .post-extra-info .post-op a {
-  text-decoration: none;
+.post-op a {
   padding: 1% 2%;
-  border-radius: 20px;
   margin-right: 4%;
-  color: white;
-  border: 1px solid transparent;
-  transition: all 0.5s ease 0s;
 }
 
-.post-container .post-extra-info .post-op #editar {
+#editar {
   background-color: lightblue;
+  border: 1px solid lightblue;
 }
 
-.post-container .post-extra-info .post-op #editar:hover {
+#editar:hover {
   background-color: white;
   color: lightblue;
   border: 1px solid;
   box-shadow: 1px 1px 3px;
 }
 
-.post-container .post-extra-info .post-op #deletar {
+#deletar {
   background-color: red;
+  color: white;
   cursor: pointer;
 }
 
-.post-container .post-extra-info .post-op #deletar:hover {
+#deletar:hover {
   background-color: white;
   color: red;
   border: 1px solid;
@@ -243,18 +234,13 @@
   text-align: end;
 }
 
-#submit, #edit-back {
+#submit {
   font-size: 1.2rem;
-  background-color: rgb(201, 120, 0);
-  color: white;
-  border: 1px solid rgb(201, 120, 0);
-  border-radius: 20px;
   padding: 0.28% 0.6%;
   box-shadow: 1px 1px 3px;
-  transition: all 0.5s ease 0s;
 }
 
-#submit:hover, #edit-back:hover {
+#submit:hover {
   transform: scale(1.25);
   background-color: rgb(247, 182, 83);
   border: 1px solid rgb(247, 182, 83);
@@ -270,6 +256,7 @@
 
 #edit-back {
   text-decoration: none;
+  padding: 0.3% 0.6%;
 }
 
 .perfil-container {
@@ -302,6 +289,69 @@
 .perfil-info a {
   font-size: 1.5rem;
   padding: 0.3% 1%;
+}
+
+.logout {
+  text-align: end;
+}
+
+.logout input {
+  font-size: 1.2rem;
+  padding: 0.5% 1.2%;
+  background-color: rgb(173, 26, 26);
+  border: 1px solid rgb(173, 26, 26);
+}
+
+.logout input:hover {
+  color: rgb(173, 26, 26);
+  box-shadow: 1px 1px 2px rgb(173, 26, 26);
+}
+
+.hist-title {
+  text-align: left;
+  padding: 0px 4%;
+}
+
+#search {
+  text-align: left;
+}
+
+.cadastro {
+  text-align: left;
+  padding: 0px 6%;
+}
+
+.cadastro label {
+  display: none;
+}
+
+.cadastro input, .cadastro textarea {
+  box-shadow: 2px 2px 4px rgb(201, 120, 0);
+}
+
+.cadastro input::-moz-placeholder, .cadastro textarea::-moz-placeholder {
+  font-size: 1.1rem;
+}
+
+.cadastro input:-ms-input-placeholder, .cadastro textarea:-ms-input-placeholder {
+  font-size: 1.1rem;
+}
+
+.cadastro input::placeholder, .cadastro textarea::placeholder {
+  font-size: 1.1rem;
+}
+
+#cadastro-enviar-container {
+  text-align: right;
+}
+
+#cadastro-enviar {
+  font-size: 1.2rem;
+  padding: 0.2% 0.8%;
+}
+
+#cadastro-enviar:hover {
+  transform: scale(1.2);
 }
 
 .info {

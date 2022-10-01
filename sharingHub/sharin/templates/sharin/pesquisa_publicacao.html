@@ -1,15 +1,35 @@
 {% extends 'sharin/layout.html' %}
 
 {% block body %}
-    {% if pesquisa %}
-        <h1>Resultados para {{ pesquisa }}</h1>
-        {% for resultado in resultados %}
-            <a href="{% url 'sharin:publicacao-view' resultado.id %}" class="btn btn-primary">{{resultado.titulo}}</a><br/>
-        {% endfor %}
-
-    {% else %}
-        <h1>Você não pesquisou nada.</h1>
-    {% endif %}
-
+    <div class="corpo">
+        {% if pesquisa %}
+            <h1 id="search" >Resultados para: "{{ pesquisa }}"</h1>
+                
+            {% if resultados %}
+                {% for publicacao in resultados %}
+                    <div class="container">
+                        <div class="card">
+                            <h1>{{publicacao.titulo}}</h1>
+                            <div class="content">
+                                {% if publicacao.descricao|length > 275  %}
+                                    <p>{{publicacao.descricao|slice:":275"}}..</p>
+                                {%else%}
+                                    <p>{{publicacao.descricao}}</p>
+                                {% endif %}
+                                <div id="card-button">
+                                    <a href="{% url 'sharin:publicacao-view' publicacao.id %}">Ver com mais detalhes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h1>Sem resultados.</h1>
+            {% endif %}
+        {% else %}
+            <h1>Você não pesquisou nada.</h1>
+        {% endif %}
+                    
+    </div>
 
 {% endblock %}
