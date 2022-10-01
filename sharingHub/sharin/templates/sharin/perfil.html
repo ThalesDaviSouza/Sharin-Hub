@@ -2,38 +2,21 @@
 
 {% block body %}
     <div class="corpo">
-        <h2 class="info">Perfil:</h2>
-        <h2 class="info">Nome de usuário: {{ request.user.username }}</h2>
-        
-        <div id="cadastroND" class="container-fluid text-center">
-            <div class="row">
-                {% if request.user.first_name != '' and request.user.last_name != '' %}
-                    <div class="cadastro_info">
-                        <h2>Primeiro nome: {{ request.user.first_name.capitalize }}</h2>
-                    </div>
-                    <div class="cadastro_info">
-                        <h2>Último nome: {{ request.user.last_name.capitalize }}</h2>
-                    </div>
-                {% endif %}
-            </div>
-            <div class="row">
-                <div class="cadastro_info">
-                    <h2>Email: {{ request.user.email }}</h2>
-                </div>
-            </div>
-            <div class="row">
-                <form action="{% url 'sharin:logout_view' %}">
-                    <input type="submit" value="Log Out">
-                </form>
+        <div class="info">
+            <h1>Perfil</h1>
+        </div>
+
+        <div class="perfil-container">
+            <h1>{{request.user.username}}</h1>
+            <p>{{request.user.first_name}} {{request.user.last_name}}</p>
+            <div class="perfil-info">
+                <h1>Informações:</h1>
+                <p>Email: {{request.user.email}}</p>
+                <a class="botao" href="{% url 'sharin:historico-usuario'%}">Histórico de publicações</a>
             </div>
         </div>
-        <ul>
-            {% if publicacoes %}
-                <a href="{% url 'sharin:historico-usuario' %}">Historico</a>
-            {% endif %}
-        </ul>
-    </div>
 
+    </div>
 
 
 {% endblock %}

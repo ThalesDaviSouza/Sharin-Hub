@@ -1,18 +1,29 @@
 {% extends "sharin/layout.html" %}
 
 {% block body %}
-    {% if user == criador %}
-        <form action="" method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="Atualizar">
-        </form>
-
-    {% else %}
-        Você não tem permissão pra editar essa publicacão.
-    {% endif %}
-    {% if atualizado %}
-        <h1>Atualizado com sucesso!</h1>
-    {% endif %}
+    <div class="edit-container">
+        {% if atualizado %}
+            <div class="edit-confirm">
+                <h1>Atualizado com sucesso!</h1>
+                <div id="edit-back-container">
+                    <a id="edit-back" href="{% url 'sharin:index' %}">Voltar para página inicial</a>
+                </div>
+            </div>
+        {% endif %}
+            
+        {% if user == criador %}
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="submit-container">
+                    <input id="submit" type="submit" value="Atualizar">
+                </div>
+            </form>
+            
+        {% else %}
+            Você não tem permissão pra editar essa publicacão.
+        {% endif %}
+        
+    </div>
 
 {% endblock %}

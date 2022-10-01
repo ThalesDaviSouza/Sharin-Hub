@@ -8,10 +8,10 @@ class PublicaForm(ModelForm):
         fields = ('titulo', 'descricao', 'telefone', 'tags')
 
         labels = {
-            'titulo': '',
-            'descricao': '',
-            'telefone': '',
-            'tags': '',
+            'titulo': 'Título',
+            'descricao': 'Descrição',
+            'telefone': 'Telefone',
+            'tags': 'Tags',
         }
 
         widgets = {
@@ -19,7 +19,7 @@ class PublicaForm(ModelForm):
                 'class':'form-control',
                 'placeholder':'Título'
                 }),
-            'descricao':forms.TextInput(attrs = {
+            'descricao':forms.Textarea(attrs = {
                 'class':'form-control',
                 'placeholder':'Descrição'
                 }),

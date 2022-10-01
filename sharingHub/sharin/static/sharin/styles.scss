@@ -7,8 +7,22 @@ $cor_secundaria: rgb(247, 182, 83);
     padding: 0;
 }
 
+.botao{
+    color: white;
+    background-color: $cor_principal;
+    border: 1px solid $cor_principal;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: all 0.3s ease 0s;
+}
 
-// Classes
+.botao:hover{
+    background-color: white;
+    color: $cor_principal;
+}
+
+
+// Navbar
 
 .navbar {
     display: flex;
@@ -78,6 +92,7 @@ $cor_secundaria: rgb(247, 182, 83);
 }
 
 
+// Post cards
 
 .container {
     width: 100%;
@@ -109,31 +124,24 @@ $cor_secundaria: rgb(247, 182, 83);
 }
 
 .container .card .content a {
+    @extend .botao;
     display: inline-block;
     padding: 0.5% 0.8%;
-    background-color: $cor_principal;
-    color: white;
-    border-radius: 10px;
-    text-decoration: none;
-    text-align: end;
-    outline: none;
     margin-top: 20px;
-    transition: all 0.5s ease 0s;
 }
 
 .container .card:hover {
     background-color: $cor_secundaria;
-    margin-top: -2.5%;
-    margin-bottom: 5%;
+    margin-left: 5%;
     box-shadow: 2px 2px 8px $cor_principal;
 }
 
 
-.container .card:hover h1, .container .card:hover .content p{
+.card:hover h1, .content p{
     color:white;
 }
 
-.container .card:hover .content #card-button a{
+#card-button a{
     color: black;
     background-color: white;
 }
@@ -174,37 +182,122 @@ $cor_secundaria: rgb(247, 182, 83);
     padding: 5% 0px;
 }
 
-.post-container .post-extra-info .post-op a{
-    text-decoration: none;
+.post-op a{
+    @extend .botao;
     padding: 1% 2%;
-    border-radius: 20px;
     margin-right: 4%;
-    color: white;
-    border: 1px solid transparent;
-    transition: all 0.5s ease 0s;
 }
 
-.post-container .post-extra-info .post-op #editar{
+#editar{
     background-color: lightblue;
 }
 
-.post-container .post-extra-info .post-op #editar:hover{
+#editar:hover{
     background-color: white;
     color: lightblue;
     border: 1px solid;
     box-shadow: 1px 1px 3px;
 }
 
-.post-container .post-extra-info .post-op #deletar{
+#deletar{
     background-color: red;
+    cursor: pointer;
 }
 
-.post-container .post-extra-info .post-op #deletar:hover{
+#deletar:hover{
     background-color: white;
     color: red;
     border: 1px solid;
     box-shadow: 1px 1px 3px;
 }
+
+
+// Edit post screen
+
+.edit-container {
+    padding: 2.3% 6%;
+}
+
+.edit-container label{
+    font-size: 1.6rem;
+}
+
+.edit-container input::placeholder, .edit-container textarea::placeholder {
+    color: rgb(143, 143, 143);
+}
+
+.edit-container input, .edit-container textarea {
+    box-shadow: 1.5px 1.5px 4px $cor_principal;    
+}
+
+.submit-container {
+    margin-top: 5%;
+    text-align: end;
+}
+
+#submit{
+    @extend botao;
+    font-size: 1.2rem;
+    padding: 0.28% 0.6%;
+    box-shadow: 1px 1px 3px;
+}
+
+#submit:hover{
+    transform: scale(1.25);
+    background-color: $cor_secundaria;
+    border: 1px solid $cor_secundaria;
+}
+
+.edit-confirm{
+    text-align: center;
+}
+
+.edit-confirm #edit-back-container{
+    padding: 1.5% 0px;
+}
+
+#edit-back{
+    @extend .botao;
+    text-decoration: none;
+}
+
+
+//Perfil screen
+
+.perfil-container {
+    text-align: left;
+    padding: 0px 5%;
+}
+
+.perfil-container h1{
+    color: $cor_principal;
+    font-size: 3rem;
+}
+
+.perfil-container p{
+    font-size: 1.8rem;
+}
+
+.perfil-info{
+    padding: 5% 0px;
+}
+
+.perfil-info h1 {
+    font-size: 2rem;
+}
+
+.perfil-info p {
+    font-size: 1.5rem;
+    padding: 0px 1%;
+}
+
+.perfil-info a {
+    @extend .botao;
+    font-size: 1.5rem;
+    padding: 0.3% 1%;
+}
+
+
 
 
 .info {

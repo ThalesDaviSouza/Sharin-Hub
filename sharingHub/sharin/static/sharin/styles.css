@@ -4,6 +4,20 @@
   padding: 0;
 }
 
+.botao {
+  color: white;
+  background-color: rgb(201, 120, 0);
+  border: 1px solid rgb(201, 120, 0);
+  border-radius: 20px;
+  text-decoration: none;
+  transition: all 0.3s ease 0s;
+}
+
+.botao:hover {
+  background-color: white;
+  color: rgb(201, 120, 0);
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -116,8 +130,7 @@
 
 .container .card:hover {
   background-color: rgb(247, 182, 83);
-  margin-top: -2.5%;
-  margin-bottom: 5%;
+  margin-left: 5%;
   box-shadow: 2px 2px 8px rgb(201, 120, 0);
 }
 
@@ -191,6 +204,7 @@
 
 .post-container .post-extra-info .post-op #deletar {
   background-color: red;
+  cursor: pointer;
 }
 
 .post-container .post-extra-info .post-op #deletar:hover {
@@ -198,6 +212,96 @@
   color: red;
   border: 1px solid;
   box-shadow: 1px 1px 3px;
+}
+
+.edit-container {
+  padding: 2.3% 6%;
+}
+
+.edit-container label {
+  font-size: 1.6rem;
+}
+
+.edit-container input::-moz-placeholder, .edit-container textarea::-moz-placeholder {
+  color: rgb(143, 143, 143);
+}
+
+.edit-container input:-ms-input-placeholder, .edit-container textarea:-ms-input-placeholder {
+  color: rgb(143, 143, 143);
+}
+
+.edit-container input::placeholder, .edit-container textarea::placeholder {
+  color: rgb(143, 143, 143);
+}
+
+.edit-container input, .edit-container textarea {
+  box-shadow: 1.5px 1.5px 4px rgb(201, 120, 0);
+}
+
+.submit-container {
+  margin-top: 5%;
+  text-align: end;
+}
+
+#submit, #edit-back {
+  font-size: 1.2rem;
+  background-color: rgb(201, 120, 0);
+  color: white;
+  border: 1px solid rgb(201, 120, 0);
+  border-radius: 20px;
+  padding: 0.28% 0.6%;
+  box-shadow: 1px 1px 3px;
+  transition: all 0.5s ease 0s;
+}
+
+#submit:hover, #edit-back:hover {
+  transform: scale(1.25);
+  background-color: rgb(247, 182, 83);
+  border: 1px solid rgb(247, 182, 83);
+}
+
+.edit-confirm {
+  text-align: center;
+}
+
+.edit-confirm #edit-back-container {
+  padding: 1.5% 0px;
+}
+
+#edit-back {
+  text-decoration: none;
+}
+
+.perfil-container {
+  text-align: left;
+  padding: 0px 5%;
+}
+
+.perfil-container h1 {
+  color: rgb(201, 120, 0);
+  font-size: 3rem;
+}
+
+.perfil-container p {
+  font-size: 1.8rem;
+}
+
+.perfil-info {
+  padding: 5% 0px;
+}
+
+.perfil-info h1 {
+  font-size: 2rem;
+}
+
+.perfil-info p {
+  font-size: 1.5rem;
+  padding: 0px 1%;
+}
+
+.perfil-info a {
+  font-size: 1.5rem;
+  padding: 0.3% 1%;
 }
 
 .info {
