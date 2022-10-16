@@ -75,6 +75,7 @@ def index(request):
 
 def cadastro(request):
     enviado = False
+    pattern = re.compile('^[(]?[0]?[\d]{2}[)]?[ ]?[9]?[ ]?[\d]{4}[-]?[\d]{4}')
     if not request.user.is_authenticated:
         return redirect("sharin:login_view")
 
@@ -82,6 +83,13 @@ def cadastro(request):
         form = PublicaForm(request.POST)
         if form.is_valid():
             publicacao = form.save(commit=False)
+            telefone = request.POST.get('telefone')
+            if re.fullmatch(pattern, telefone) == None:
+                messages.error(request, 'Telefone em formato inválido')
+                return render(request, "sharin/cadastro.html", {
+                    'form':form,
+                })
+
             publicacao.criador = request.user.id
             publicacao.data = datetime.datetime.now()
             publicacao.save()
@@ -109,6 +117,7 @@ def publicacao_view(request, publicacao_id):
 
 def publicacao_edit(request, publicacao_id):
     atualizado = False
+    pattern = re.compile('^[(]?[0]?[\d]{2}[)]?[ ]?[9]?[ ]?[\d]{4}[-]?[\d]{4}')
 
     if not request.user.is_authenticated:
         return redirect("sharin:login_view")
@@ -118,7 +127,14 @@ def publicacao_edit(request, publicacao_id):
     form = PublicaForm(request.POST or None, instance=publicacao)
 
     if form.is_valid():
-        form.save()
+        telefone = request.POST.get('telefone')
+        if re.fullmatch(pattern, telefone) == None:
+            messages.error(request, 'Telefone em formato inválido')
+            return render(request, "sharin/cadastro.html", {
+                'form':form,
+            })
+        else:
+            form.save()
         atualizado = True
 
     return render(request, "sharin/publicacao_edit.html", {

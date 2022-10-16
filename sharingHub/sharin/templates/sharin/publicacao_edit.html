@@ -2,6 +2,10 @@
 
 {% block body %}
     <div class="edit-container">
+        {% for message in messages %}
+            <h1>{{ message }}</h1>
+
+        {% endfor %}
         {% if atualizado %}
             <div class="edit-confirm">
                 <h1>Atualizado com sucesso!</h1>

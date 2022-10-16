@@ -25,7 +25,7 @@ class PublicaForm(ModelForm):
                 }),
             'telefone':forms.TextInput(attrs = {
                 'class':'form-control',
-                'placeholder':'Telefone'
+                'placeholder':'Telefone: (31) 9 9999-9999'
                 }),
             'tags':forms.TextInput(attrs = {
                 'class':'form-control',
