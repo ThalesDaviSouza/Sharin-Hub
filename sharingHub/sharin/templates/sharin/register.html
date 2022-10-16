@@ -3,23 +3,27 @@
 
 {% block body %}
     <div class="corpo">
+        {% if enviado %}
+            <h1>Cadastro feito com sucesso</h1>
+            <a href="{% url 'sharin:login' %}" class="botao">Voltar a tela de login</a>
+        {% else %}
         <div id="cadastroND" class="container-fluid text-center"></div>
             <form action="{% url 'sharin:register' %}" method="post">
                 {% csrf_token %}
                 <div id="registro_user" class="row">
-                    <input type="text" name="nome_usuario" placeholder=" Insira o seu nome de usuário" Required>
+                    <input type="text" value="{{nome_usuario}}" name="nome_usuario" placeholder=" Insira o seu nome de usuário" Required>
                 </div>
                 
                 <div id="registro_prim" class="row">
-                    <input type="text" name="primeiro_nome" placeholder="Insira o seu primeiro nome" Required>
+                    <input type="text" value="{{primeiro_nome}}"  name="primeiro_nome" placeholder="Insira o seu primeiro nome" Required>
                 </div>
 
                 <div id="registro_ulti" class="row">
-                    <input type="text" name="ultimo_nome" placeholder="Insira o seu último nome" Required>
+                    <input type="text" value="{{ultimo_nome}}"  name="ultimo_nome" placeholder="Insira o seu último nome" Required>
                 </div>
                 
                 <div id="registro_email" class="row">
-                    <input type="email" name="email" placeholder="Insira o seu email" Required>        
+                    <input type="email" value="{{email}}" name="email" placeholder="Insira o seu email" Required>        
                 </div>
                 
                 <div id="registro_senha" class="row">
@@ -31,13 +35,15 @@
                 </div>
                 
                 <div id="registro_enviar" class="row">
-                    <input type="submit" value="Login">
+                    <input type="submit" value="Cadastrar">
                 </div>
             </form>
         </div>
+        {% endif %}
     </div>
+
     {% for message in messages %}
         <h2>{{ message }}</h2>
-        {% endfor %}
+    {% endfor %}
         
 {% endblock %}

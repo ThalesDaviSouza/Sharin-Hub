@@ -17,9 +17,9 @@
                     <input type="submit" value="Login">
                 </div>
             </form>
-            {% if message %}
+            {% for message in messages %}
                 <h1 class="aviso">{{ message }}</h1>
-            {% endif %}
+            {% endfor %}
 
             <h3 class="info">Ainda não tem conta?</h3>
             <form action="{% url 'sharin:register' %}">

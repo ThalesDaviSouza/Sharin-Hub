@@ -1,0 +1,7 @@
+{% autoescape off %}
+Olá {{ user.username }},
+
+Por favor clique no link abaixo para confirmar o seu email:
+
+{{ protocol }}://{{ domain }}{% url 'sharin:activate' uidb64=uid token=token %}
+{% endautoescape %}
