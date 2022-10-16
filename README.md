@@ -10,3 +10,7 @@
 
 ## Por que o Sharin'Hub foi criado?
 - O Sharin'Hub surgiu como uma proposta para o Desafio do Instituto MRV do [Desafio Empower - Embaixadores da Educação](https://www.desafioempower.com.br).
+
+
+## Considerações importantes
+- O Sharin'Hub foi desenvolvido com o propósito de beneficiar o ambiente do COLTEC-UMFG, pelo menos inicialmente. Assim no momento o cadastro deve ser feito com o email da instituição.
