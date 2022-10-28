@@ -20,11 +20,13 @@
             {% for message in messages %}
                 <h1 class="aviso">{{ message }}</h1>
             {% endfor %}
-
-            <h3 class="info">Ainda não tem conta?</h3>
-            <form action="{% url 'sharin:register' %}">
-                <input type="submit" value="Registrar">
-            </form>
+            <div>
+                <h3 class="info">Ainda não tem conta?</h3>
+                <form action="{% url 'sharin:register' %}">
+                    <input type="submit" value="Registrar">
+                </form>
+                <a href="{% url 'sharin:password_reset' %}">Esqueceu a sua senha?</a>
+            </div>
         </div>
     </div>
 

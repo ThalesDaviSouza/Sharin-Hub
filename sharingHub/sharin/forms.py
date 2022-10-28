@@ -1,5 +1,7 @@
 from django import forms
 from django.forms import ModelForm
+from django.contrib.auth.forms import SetPasswordForm
+from django.contrib.auth import get_user_model
 from .models import Publicacao
 
 class PublicaForm(ModelForm):
@@ -32,3 +34,11 @@ class PublicaForm(ModelForm):
                 'placeholder':'Tags'
                 }),
         }
+
+
+class SetPasswordForm(SetPasswordForm):
+    class Meta:
+        model = get_user_model()
+        fields = ['new_password1', 'new_password2']
+
+    

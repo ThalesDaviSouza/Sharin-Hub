@@ -11,13 +11,15 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
 from django.core.mail import EmailMessage
+from django.db.models.query_utils import Q
 
 import re
 import datetime
 
 from .models import Publicacao
-from .forms import PublicaForm
+from .forms import PublicaForm, SetPasswordForm
 from .tokens import account_activation_token
+from django.contrib.auth.forms import PasswordResetForm
 
 # Create your views here.
 
@@ -72,6 +74,9 @@ def index(request):
     return render(request, "sharin/index.html", {
         'publicacao_list': publicacoes,
     })
+
+def sobre(request):
+    return render(request, "sharin/sobre.html", {})
 
 def cadastro(request):
     enviado = False
@@ -268,6 +273,89 @@ def perfil(request):
     return render(request, "sharin/perfil.html", {
         "publicacoes":publicacoes,
     })
+
+def password_change(request):
+    if not request.user.is_authenticated:
+        return redirect("sharin:login_view")
+    
+    user = request.user
+    if request.method == 'POST':
+        form = SetPasswordForm(user, request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Sua senha foi atualizada.")
+            return redirect('sharin:login_view')
+        else:
+            for error in list(form.errors.values()):
+                messages.error(request, error)
+
+
+    form = SetPasswordForm(user) 
+    return render(request, 'password_reset_confirm.html', {'form': form})
+
+
+
+def password_reset_request(request):
+    if request.user.is_authenticated:
+        return redirect("sharin:index")
+
+    if request.method == 'POST':
+        form = PasswordResetForm(request.POST)
+        if form.is_valid():
+            user_email = form.cleaned_data['email']
+            associated_user = get_user_model().objects.filter(Q(email=user_email)).first()
+            if associated_user:
+                mail_subject = "Redefinição de senha."
+                message = render_to_string("template_reset_password.html", {
+                    'user': associated_user.username,
+                    'domain': get_current_site(request).domain,
+                    'uid': urlsafe_base64_encode(force_bytes(associated_user.pk)),
+                    'token': account_activation_token.make_token(associated_user),
+                    'protocol': 'https' if request.is_secure() else 'http'
+                })
+                email = EmailMessage(mail_subject, message, to=[associated_user.email])
+
+                if email.send():
+                    messages.success(request, f'Nos enviamos instruções para o seu email. Então, por favor, olhe o seu email para continuar o processo. Obs: talvez esteja na caixa de spam.')
+                else:
+                    messages.error(request, f'Houve um problema para enviar o email para {associated_user}, por favor verifique se você digitou corretamente.')
+                
+                return redirect('sharin:login_view')
+            messages.error(request, f'Houve um problema para enviar o email para {associated_user}, por favor verifique se você digitou corretamente.')
+            return render(request, 'password_reset.html', {"form": form})
+
+    form = PasswordResetForm()
+    return render(request, 'password_reset.html', {"form": form})
+
+def password_reset_confirm(request, uidb64, token):
+    User = get_user_model()
+    try:
+        uid = force_str(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+    except:
+        user = None
+
+    if user is not None and account_activation_token.check_token(user, token):
+        if request.method == "POST":
+            form = SetPasswordForm(user, request.POST)
+            if form.is_valid():
+                form.save()
+                messages.success(request, "A sua senha foi atualizada.")
+                return redirect('sharin:login_view')
+            else:
+                for error in list(form.errors.values()):
+                    messages.error(request, error)
+
+        form = SetPasswordForm(user)
+        return render(request, 'password_reset_confirm.html', {'form':form})
+        
+    else:
+        messages.error(request, "O link de ativação é inválido!")
+
+    messages.error(request, "Algo deu errado!")
+
+    return redirect('sharin:login_view')
+
 
 def historico(request):
     if not request.user.is_authenticated:

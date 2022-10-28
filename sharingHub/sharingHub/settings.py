@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-1ywmx8g^@hvp!!8w=o_-zonu)a31brj-^(b+6_3t4vwt1h*3yh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = f"{os.environ.get('DEBUG_VALUE')}"
 
 ALLOWED_HOSTS = ['sharinhub.herokuapp.com']
 
@@ -140,7 +140,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_FROM = 'sharinhub@gmail.com'
 EMAIL_HOST_USER = 'sharinhub@gmail.com'
-EMAIL_HOST_PASSWORD = 'jallsmsfjpphqbpm'
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
