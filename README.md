@@ -1,6 +1,6 @@
 # **Sharin'Hub**
 
-| [Acesse o Sharin'Hub aqui!](https://sharinhub.herokuapp.com)
+| [Acesse o Sharin'Hub aqui!](http://www.sharinhub.com.br)
 
 ## O Que é o Sharin'Hub?
 - Sharin'Hub nasceu com o objetivo de conectar os estudantes de uma mesma escola, de forma que eles possam compartilhar projetos, sonhos, talentos, necessidades, doações, entre outros. 
